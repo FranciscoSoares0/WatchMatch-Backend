@@ -12,6 +12,8 @@ export class Friends {
   @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true })
   friendId: Types.ObjectId;
 
+  @Prop({ enum: ['pending', 'accepted', 'rejected'], default: 'pending' })
+  status: string;
 }
 
 export const FriendsSchema = SchemaFactory.createForClass(Friends);

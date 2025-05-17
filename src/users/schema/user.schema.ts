@@ -14,6 +14,9 @@ export class User {
 
     @Prop()
     refreshToken?: string;
+
+    @Prop()
+    profileImage?: string;
     
     @Prop({
         required: function (this: User) {

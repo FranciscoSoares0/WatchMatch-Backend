@@ -25,7 +25,8 @@ export class GoogleStrategy extends PassportStrategy(Strategy) {
 
     const email = profile.emails[0]?.value;
 
-    const existingUser = await this.usersService.getUser({ email });
+    const existingUser = await this.usersService.findUser({ email });
+
     if (existingUser && existingUser.authProvider === 'local') {
       throw new UnauthorizedException(
          'This email is already registered using password login. Please use password login to access your account.',
@@ -37,6 +38,7 @@ export class GoogleStrategy extends PassportStrategy(Strategy) {
       email: profile.emails[0]?.value,
       password: '',
       authProvider: 'google',
+      profileImage: profile.photos[0]?.value,
     });
 
     return user;

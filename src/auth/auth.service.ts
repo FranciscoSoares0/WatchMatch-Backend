@@ -17,6 +17,7 @@ import { UsersService } from 'src/users/users.service';
 import { ResetToken } from './schemas/reset-token.schema';
 const { nanoid } = require('nanoid');
 import { MailService } from './services/mail.service';
+import { profile } from 'console';
 
 @Injectable()
 export class AuthService {
@@ -117,6 +118,7 @@ export class AuthService {
         _id: user._id,
         name: user.name,
         email: user.email,
+        profileImage: user.profileImage,
       });
   }
 

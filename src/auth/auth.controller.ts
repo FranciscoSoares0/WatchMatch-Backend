@@ -83,6 +83,7 @@ export class AuthController {
       name: user.name,
       email: user.email,
       authProvider: user.authProvider,
+      profileImage: user.profileImage,
     };
   }
 

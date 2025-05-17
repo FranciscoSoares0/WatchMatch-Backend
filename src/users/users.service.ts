@@ -13,8 +13,8 @@ export class UsersService {
   ) {}
 
   async createUser(data: SignupDto) {
-    if(data.authProvider === 'local'){
-        data.password = await hash(data.password, 10);
+    if (data.authProvider === 'local') {
+      data.password = await hash(data.password, 10);
     }
     const createdUser = new this.userModel(data);
     await createdUser.save();
@@ -27,6 +27,10 @@ export class UsersService {
       throw new NotFoundException('User not found');
     }
     return user;
+  }
+
+  async findUser(query: FilterQuery<User>) {
+    return this.userModel.findOne(query);
   }
 
   async getUsers() {

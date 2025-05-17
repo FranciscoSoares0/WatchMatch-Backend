@@ -17,4 +17,8 @@ export class SignupDto {
     @IsOptional() 
     @IsString()
     authProvider?: 'google' | 'local';
+
+    @IsOptional() 
+    @IsString()
+    profileImage?: string;
 }   
